@@ -1,4 +1,4 @@
-package com.github.magiepooh.recycleritemdecoration;
+package com.github.magiepooh.recycleritemdecoration.demo;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

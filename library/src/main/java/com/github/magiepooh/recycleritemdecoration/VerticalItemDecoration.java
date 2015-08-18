@@ -12,7 +12,7 @@ import android.view.View;
 import java.util.HashMap;
 
 /**
- * Created by magiepooh on 2015/08/17.
+ * Created by magiepooh on 2015/08/.
  */
 public class VerticalItemDecoration extends RecyclerView.ItemDecoration {
 

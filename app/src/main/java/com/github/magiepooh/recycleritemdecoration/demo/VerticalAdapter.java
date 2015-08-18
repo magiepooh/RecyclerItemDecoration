@@ -1,4 +1,4 @@
-package com.github.magiepooh.recycleritemdecoration;
+package com.github.magiepooh.recycleritemdecoration.demo;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -98,7 +98,7 @@ public class VerticalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         private String mText;
 
-        TypeAObject(String text) {
+        public TypeAObject(String text) {
             mText = text;
         }
 
@@ -117,7 +117,7 @@ public class VerticalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         public String mText;
 
-        TypeBObject(String text) {
+        public TypeBObject(String text) {
             mText = text;
         }
 

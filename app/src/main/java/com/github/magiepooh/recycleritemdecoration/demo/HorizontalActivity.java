@@ -1,4 +1,6 @@
-package com.github.magiepooh.recycleritemdecoration;
+package com.github.magiepooh.recycleritemdecoration.demo;
+
+import com.github.magiepooh.recycleritemdecoration.HorizontalItemDecoration;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,14 +15,14 @@ import android.support.v7.widget.RecyclerView;
 public class HorizontalActivity extends AppCompatActivity {
 
     private static final HorizontalAdapter.Binder[] mockData = {
-            new HorizontalAdapter.TypeAObject("1"),
-            new HorizontalAdapter.TypeAObject("2"),
-            new HorizontalAdapter.TypeAObject("33"),
-            new HorizontalAdapter.TypeAObject("4"),
-            new HorizontalAdapter.TypeAObject("5"),
-            new HorizontalAdapter.TypeAObject("6"),
-            new HorizontalAdapter.TypeAObject("7"),
-            new HorizontalAdapter.TypeAObject("8")
+            new HorizontalAdapter.TypeAObject("AType 1"),
+            new HorizontalAdapter.TypeAObject("AType 2"),
+            new HorizontalAdapter.TypeAObject("AType 3"),
+            new HorizontalAdapter.TypeAObject("AType 4"),
+            new HorizontalAdapter.TypeAObject("AType 5"),
+            new HorizontalAdapter.TypeAObject("AType 6"),
+            new HorizontalAdapter.TypeAObject("AType 7"),
+            new HorizontalAdapter.TypeAObject("AType 8")
     };
 
     public static void startActivity(Activity activity) {

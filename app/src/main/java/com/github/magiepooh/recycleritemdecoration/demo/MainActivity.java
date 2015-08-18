@@ -1,4 +1,4 @@
-package com.github.magiepooh.recycleritemdecoration;
+package com.github.magiepooh.recycleritemdecoration.demo;
 
 import android.app.Activity;
 import android.os.Bundle;

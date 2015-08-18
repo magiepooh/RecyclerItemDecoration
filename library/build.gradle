@@ -1,14 +1,17 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'license'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion COMPILE_SDK_VERSION as int
+    buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
         minSdkVersion 7
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion COMPILE_SDK_VERSION as int
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME
     }
     buildTypes {
         release {
@@ -22,3 +25,106 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:recyclerview-v7:22.2.1'
 }
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+// for maven
+version = VERSION_NAME
+group = GROUP
+def siteUrl = 'https://github.com/magiepooh/RecyclerItemDecoration'
+def gitUrl = 'https://github.com/magiepooh/RecyclerItemDecoration.git'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray_user")
+    key = properties.getProperty("bintray_api_key")
+
+    configurations = ['archives'] //When uploading configuration files
+    pkg {
+        repo = 'android'
+        name = project.name
+        desc = 'ItemDecoration for RecyclerView using LinearLayoutManager'
+        websiteUrl = siteUrl
+        issueTrackerUrl = 'https://github.com/magiepooh/RecyclerItemDecoration/issues'
+        vcsUrl = gitUrl
+        licenses = ['Apache-2.0']
+        labels = ['aar', 'android', 'example']
+        publicDownloadNumbers = true
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'recycleritemdecoration'
+                url siteUrl
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'magiepooh'
+                        name 'Takuma Fujita'
+                        email 't.fujita0529+m@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+task findConventions << {
+    println project.getConvention()
+}
+
+license {
+
+    sourceSets {
+        main.java.srcDirs = android.sourceSets.main.java.srcDirs
+        main.resources.srcDirs = android.sourceSets.main.resources.srcDirs
+    }
+
+    ext.year = Calendar.getInstance().get(Calendar.YEAR)
+    ext.name = properties.getProperty("bintray_user")
+}
+
