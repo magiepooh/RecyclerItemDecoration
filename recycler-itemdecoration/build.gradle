@@ -32,17 +32,12 @@ buildscript {
     }
     dependencies {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
 // for maven
 version = VERSION_NAME
 group = GROUP
-def siteUrl = 'https://github.com/magiepooh/RecyclerItemDecoration'
-def gitUrl = 'https://github.com/magiepooh/RecyclerItemDecoration.git'
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
@@ -52,12 +47,12 @@ bintray {
 
     configurations = ['archives'] //When uploading configuration files
     pkg {
-        repo = 'android'
-        name = project.name
-        desc = 'ItemDecoration for RecyclerView using LinearLayoutManager'
-        websiteUrl = siteUrl
+        repo = 'maven'
+        name = ARTIFACT_NAME
+        desc = ARTIFACT_DESCRIPTION
+        websiteUrl = SITE_URL
         issueTrackerUrl = 'https://github.com/magiepooh/RecyclerItemDecoration/issues'
-        vcsUrl = gitUrl
+        vcsUrl = GIT_URL
         licenses = ['Apache-2.0']
         labels = ['aar', 'android', 'example']
         publicDownloadNumbers = true
@@ -69,8 +64,8 @@ install {
         pom {
             project {
                 packaging 'aar'
-                name 'recycleritemdecoration'
-                url siteUrl
+                name ARTIFACT_NAME
+                url SITE_URL
                 licenses {
                     license {
                         name 'The Apache Software License, Version 2.0'
@@ -85,9 +80,9 @@ install {
                     }
                 }
                 scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
+                    connection GIT_URL
+                    developerConnection GIT_URL
+                    url SITE_URL
                 }
             }
         }
