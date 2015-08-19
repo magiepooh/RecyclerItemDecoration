@@ -11,7 +11,9 @@ ItemDecoration for RecyclerView using LinearLayoutManager
   - Horizontal(Reverse)
 
 # Gradle
-Comming soon
+```
+compile 'com.github.magiepooh:recycler-itemdecoration:1.0.0@aar'
+```
 
 # How To Use
 ```java
