@@ -1,5 +1,10 @@
 # RecyclerItemDecoration
-ItemDecoration for RecyclerView using LinearLayoutManager
+
+RecyclerItemDecoration allows you to draw divider between items in recyclerview with multiple ViewType without considering items' positions!
+
+When using recyclerView with different ViewType, you either have only one simple divider or different types of dividers. When you want to draw different dividers between recyclerView's items, basically you must consider items' position; often you need to have separate ItemDecoration's behaviors declared in your code using switch cases or if statements. For example, each time items' position changes happen, you must rewrite ItemDecoration's behaviors.
+
+You don't need to think about items' position! You need to care about their **ViewType**!!
 
 # Image
 ![screen_shot_01] ![screen_shot_02] ![screen_shot_03]
