@@ -7,7 +7,7 @@ When using recyclerView with different ViewType, you either have only one simple
 You don't need to think about items' position! You need to care about their **ViewType**!!
 
 # Image
-![screen_shot_01] ![screen_shot_02] ![screen_shot_03]
+![demo_vertical] ![demo_horizontal]
 
 # Support
 - LineaLayoutManager
@@ -50,6 +50,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-[screen_shot_01]:https://raw.githubusercontent.com/magiepooh/RecyclerItemDecoration/master/art/screen_shot_01.png
-[screen_shot_02]:https://raw.githubusercontent.com/magiepooh/RecyclerItemDecoration/master/art/screen_shot_02.png
-[screen_shot_03]:https://raw.githubusercontent.com/magiepooh/RecyclerItemDecoration/master/art/screen_shot_03.png
+[demo_vertical]:https://raw.githubusercontent.com/magiepooh/RecyclerItemDecoration/master/art/demo_vertical.gif
+[demo_horizontal]:https://raw.githubusercontent.com/magiepooh/RecyclerItemDecoration/master/art/demo_horizontal.gif
