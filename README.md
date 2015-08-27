@@ -24,8 +24,9 @@ compile 'com.github.magiepooh:recycler-itemdecoration:1.0.0@aar'
 ```java
 RecyclerView.ItemDecoration decoration = new VerticalItemDecoration.Builder(this)
                 .first(R.drawable.shape_decoration_sea_blue_h_8)
-                .type(VerticalAdapter.ViewType.TYPE_A.ordinal(), R.drawable.shape_decoration_black_h_1)
-                .type(VerticalAdapter.ViewType.TYPE_B.ordinal(), R.drawable.shape_decoration_gray_h_1)
+                .type(DemoViewType.LANDSCAPE_ITEM.ordinal(), R.drawable.shape_decoration_gray_h_4_padding)
+                .type(DemoViewType.LANDSCAPE_TILE.ordinal(), R.drawable.shape_decoration_cornflower_lilac_h_4)
+                .type(DemoViewType.LANDSCAPE_DESCRIPTION.ordinal(), R.drawable.shape_decoration_red_h_2)
                 .last(R.drawable.shape_decoration_flush_orange_h_8)
                 .build();
 
