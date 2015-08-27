@@ -114,7 +114,7 @@ public class VerticalItemDecoration extends RecyclerView.ItemDecoration {
         private Drawable mFirstDrawable;
         private Drawable mLastDrawable;
 
-        public Builder(Context context) {
+        Builder(Context context) {
             mContext = context;
         }
 
@@ -156,7 +156,7 @@ public class VerticalItemDecoration extends RecyclerView.ItemDecoration {
             return this;
         }
 
-        public VerticalItemDecoration build() {
+        public VerticalItemDecoration create() {
             return new VerticalItemDecoration(mDividerViewTypeMap, mFirstDrawable, mLastDrawable);
         }
 

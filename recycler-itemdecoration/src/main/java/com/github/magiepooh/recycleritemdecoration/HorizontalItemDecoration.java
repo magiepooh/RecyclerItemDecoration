@@ -147,7 +147,7 @@ public class HorizontalItemDecoration extends RecyclerView.ItemDecoration {
         private Drawable mFirstDrawable;
         private Drawable mLastDrawable;
 
-        public Builder(Context context) {
+        Builder(Context context) {
             mContext = context;
         }
 
@@ -189,7 +189,7 @@ public class HorizontalItemDecoration extends RecyclerView.ItemDecoration {
             return this;
         }
 
-        public HorizontalItemDecoration build() {
+        public HorizontalItemDecoration create() {
             return new HorizontalItemDecoration(mDividerViewTypeMap, mFirstDrawable,
                     mLastDrawable);
         }
