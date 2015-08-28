@@ -1,6 +1,6 @@
 package com.github.magiepooh.recycleritemdecoration.demo;
 
-import com.github.magiepooh.recycleritemdecoration.HorizontalItemDecoration;
+import com.github.magiepooh.recycleritemdecoration.ItemDecorations;
 import com.github.magiepooh.recycleritemdecoration.demo.binder.PageBinder;
 
 import android.app.Activity;
@@ -18,7 +18,7 @@ import jp.satorufujiwara.binder.recycler.RecyclerBinder;
 import jp.satorufujiwara.binder.recycler.RecyclerBinderAdapter;
 
 /**
- * Created by magiepooh on 2015/08/17.
+ * Created by magiepooh on 2015/08
  */
 public class HorizontalActivity extends AppCompatActivity {
 
@@ -32,11 +32,11 @@ public class HorizontalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_horizontal);
 
         // create ItemDecoration
-        RecyclerView.ItemDecoration decoration = new HorizontalItemDecoration.Builder(this)
-                .first(R.drawable.shape_decoration_sea_blue_w_8)
-                .type(DemoViewType.PAGE.ordinal(), R.drawable.shape_decoration_black_w_4)
+        RecyclerView.ItemDecoration decoration = ItemDecorations.horizontal(this)
+                .first(R.drawable.shape_decoration_green_w_8)
+                .type(DemoViewType.PAGE.ordinal(), R.drawable.shape_decoration_red_w_8)
                 .last(R.drawable.shape_decoration_flush_orange_w_8)
-                .build();
+                .create();
 
         // normal
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_horizontal);

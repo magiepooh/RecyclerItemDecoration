@@ -1,6 +1,6 @@
 package com.github.magiepooh.recycleritemdecoration.demo;
 
-import com.github.magiepooh.recycleritemdecoration.VerticalItemDecoration;
+import com.github.magiepooh.recycleritemdecoration.ItemDecorations;
 import com.github.magiepooh.recycleritemdecoration.demo.binder.LandscapeDescriptionBinder;
 import com.github.magiepooh.recycleritemdecoration.demo.binder.LandscapeItemBinder;
 import com.github.magiepooh.recycleritemdecoration.demo.binder.LandscapeTileBinder;
@@ -33,16 +33,16 @@ public class VerticalActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // create ItemDecoration
-        RecyclerView.ItemDecoration decoration = new VerticalItemDecoration.Builder(this)
-                .first(R.drawable.shape_decoration_sea_blue_h_8)
+        RecyclerView.ItemDecoration decoration = ItemDecorations.vertical(this)
+                .first(R.drawable.shape_decoration_green_h_16)
                 .type(DemoViewType.LANDSCAPE_ITEM.ordinal(),
-                        R.drawable.shape_decoration_gray_h_4_padding)
+                        R.drawable.shape_decoration_gray_h_12_padding)
                 .type(DemoViewType.LANDSCAPE_TILE.ordinal(),
-                        R.drawable.shape_decoration_cornflower_lilac_h_4)
+                        R.drawable.shape_decoration_cornflower_lilac_h_8)
                 .type(DemoViewType.LANDSCAPE_DESCRIPTION.ordinal(),
-                        R.drawable.shape_decoration_red_h_2)
-                .last(R.drawable.shape_decoration_flush_orange_h_8)
-                .build();
+                        R.drawable.shape_decoration_red_h_8)
+                .last(R.drawable.shape_decoration_flush_orange_h_16)
+                .create();
         recyclerView.addItemDecoration(decoration);
 
         RecyclerBinderAdapter<DemoSectionType, DemoViewType> adapter
