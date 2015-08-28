@@ -22,13 +22,13 @@ compile 'com.github.magiepooh:recycler-itemdecoration:1.0.0@aar'
 
 # How To Use
 ```java
-RecyclerView.ItemDecoration decoration = new VerticalItemDecoration.Builder(this)
-                .first(R.drawable.shape_decoration_sea_blue_h_8)
-                .type(DemoViewType.LANDSCAPE_ITEM.ordinal(), R.drawable.shape_decoration_gray_h_4_padding)
-                .type(DemoViewType.LANDSCAPE_TILE.ordinal(), R.drawable.shape_decoration_cornflower_lilac_h_4)
-                .type(DemoViewType.LANDSCAPE_DESCRIPTION.ordinal(), R.drawable.shape_decoration_red_h_2)
-                .last(R.drawable.shape_decoration_flush_orange_h_8)
-                .build();
+RecyclerView.ItemDecoration decoration = ItemDecorations.vertical(this)
+                .first(R.drawable.shape_decoration_green_h_16)
+                .type(DemoViewType.LANDSCAPE_ITEM.ordinal(), R.drawable.shape_decoration_gray_h_12_padding)
+                .type(DemoViewType.LANDSCAPE_TILE.ordinal(), R.drawable.shape_decoration_cornflower_lilac_h_8)
+                .type(DemoViewType.LANDSCAPE_DESCRIPTION.ordinal(), R.drawable.shape_decoration_red_h_8)
+                .last(R.drawable.shape_decoration_flush_orange_h_16)
+                .create();
 
 recyclerView.addItemDecoration(decoration);
 ```
