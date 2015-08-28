@@ -1,4 +1,5 @@
 # RecyclerItemDecoration
+ [ ![Download](https://api.bintray.com/packages/magiepooh/maven/RecyclerItemDecoration/images/download.svg) ](https://bintray.com/magiepooh/maven/RecyclerItemDecoration/_latestVersion)
 
 RecyclerItemDecoration allows you to draw divider between items in recyclerview with multiple ViewType without considering items' positions!
 
@@ -17,7 +18,7 @@ You don't need to think about items' position! You need to care about their **Vi
 
 # Gradle
 ```
-compile 'com.github.magiepooh:recycler-itemdecoration:1.0.0@aar'
+compile 'com.github.magiepooh:recycler-itemdecoration:1.1.0@aar'
 ```
 
 # How To Use
