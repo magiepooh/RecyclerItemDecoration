@@ -1,5 +1,5 @@
 # RecyclerItemDecoration
- [ ![Download](https://api.bintray.com/packages/magiepooh/maven/RecyclerItemDecoration/images/download.svg) ](https://bintray.com/magiepooh/maven/RecyclerItemDecoration/_latestVersion)
+ [ ![Download](https://api.bintray.com/packages/magiepooh/maven/RecyclerItemDecoration/images/download.svg) ](https://bintray.com/magiepooh/maven/RecyclerItemDecoration/_latestVersion) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RecyclerItemDecoration-green.svg?style=flat)](https://android-arsenal.com/details/1/2417)
 
 RecyclerItemDecoration allows you to draw divider between items in recyclerview with multiple ViewType without considering items' positions!
 
