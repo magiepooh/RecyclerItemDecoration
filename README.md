@@ -54,3 +54,7 @@ limitations under the License.
 
 [demo_vertical]:https://raw.githubusercontent.com/magiepooh/RecyclerItemDecoration/master/art/demo_vertical.gif
 [demo_horizontal]:https://raw.githubusercontent.com/magiepooh/RecyclerItemDecoration/master/art/demo_horizontal.gif
+
+# Credits
+
+* Photo by [AAkira](https://github.com/AAkira)
