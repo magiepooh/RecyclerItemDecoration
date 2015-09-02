@@ -1,6 +1,10 @@
 package com.github.magiepooh.recycleritemdecoration.demo;
 
-import com.github.magiepooh.recycleritemdecoration.VerticalItemDecoration;
+import com.github.magiepooh.recycleritemdecoration.ItemDecorations;
+import com.github.magiepooh.recycleritemdecoration.demo.binder.LandscapeDescriptionBinder;
+import com.github.magiepooh.recycleritemdecoration.demo.binder.LandscapeItemBinder;
+import com.github.magiepooh.recycleritemdecoration.demo.binder.LandscapeTileBinder;
+import com.github.magiepooh.recycleritemdecoration.demo.binder.TitleBinder;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,28 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import jp.satorufujiwara.binder.recycler.RecyclerBinderAdapter;
+
 /**
  * Created by magiepooh on 2015/08
  */
 public class VerticalActivity extends AppCompatActivity {
-
-    private static final VerticalAdapter.Binder[] mockData = {
-            new VerticalAdapter.TypeAObject("TypeA 1"),
-            new VerticalAdapter.TypeAObject("TypeA 2"),
-            new VerticalAdapter.TypeAObject("TypeA 3"),
-            new VerticalAdapter.TypeAObject("TypeA 4"),
-            new VerticalAdapter.TypeBObject("TypeB 5"),
-            new VerticalAdapter.TypeBObject("TypeB 6"),
-            new VerticalAdapter.TypeBObject("TypeB 7"),
-            new VerticalAdapter.TypeBObject("TypeB 8"),
-            new VerticalAdapter.TypeBObject("TypeB 9"),
-            new VerticalAdapter.TypeBObject("TypeB 10"),
-            new VerticalAdapter.TypeBObject("TypeB 11"),
-            new VerticalAdapter.TypeAObject("TypeA 12"),
-            new VerticalAdapter.TypeAObject("TypeA 13"),
-            new VerticalAdapter.TypeAObject("TypeA 14"),
-            new VerticalAdapter.TypeAObject("TypeA 15")
-    };
 
     public static void startActivity(Activity activity) {
         activity.startActivity(new Intent(activity, VerticalActivity.class));
@@ -44,16 +32,52 @@ public class VerticalActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_vertical);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        RecyclerView.ItemDecoration decoration = new VerticalItemDecoration.Builder(this)
-                .first(R.drawable.shape_decoration_sea_blue_h_8)
-                .type(VerticalAdapter.ViewType.TYPE_A.ordinal(),
-                        R.drawable.shape_decoration_black_h_1)
-                .type(VerticalAdapter.ViewType.TYPE_B.ordinal(),
-                        R.drawable.shape_decoration_gray_h_1)
-                .last(R.drawable.shape_decoration_flush_orange_h_8)
-                .build();
+        // create ItemDecoration
+        RecyclerView.ItemDecoration decoration = ItemDecorations.vertical(this)
+                .first(R.drawable.shape_decoration_green_h_16)
+                .type(DemoViewType.LANDSCAPE_ITEM.ordinal(),
+                        R.drawable.shape_decoration_gray_h_12_padding)
+                .type(DemoViewType.LANDSCAPE_TILE.ordinal(),
+                        R.drawable.shape_decoration_cornflower_lilac_h_8)
+                .type(DemoViewType.LANDSCAPE_DESCRIPTION.ordinal(),
+                        R.drawable.shape_decoration_red_h_8)
+                .last(R.drawable.shape_decoration_flush_orange_h_16)
+                .create();
         recyclerView.addItemDecoration(decoration);
 
-        recyclerView.setAdapter(new VerticalAdapter(mockData));
+        RecyclerBinderAdapter<DemoSectionType, DemoViewType> adapter
+                = new RecyclerBinderAdapter<>();
+        adapter.add(DemoSectionType.ITEM, new TitleBinder(this, "Pisa"));
+        adapter.add(DemoSectionType.ITEM,
+                new LandscapeItemBinder(this, R.drawable.demo0_1, "pisa_01"));
+        adapter.add(DemoSectionType.ITEM,
+                new LandscapeItemBinder(this, R.drawable.demo0_2, "pisa_02"));
+        adapter.add(DemoSectionType.ITEM,
+                new LandscapeItemBinder(this, R.drawable.demo0_3, "pisa_03"));
+        adapter.add(DemoSectionType.ITEM,
+                new LandscapeItemBinder(this, R.drawable.demo0_4, "pisa_04"));
+
+        adapter.add(DemoSectionType.ITEM, new TitleBinder(this, "Venice"));
+        adapter.add(DemoSectionType.ITEM,
+                new LandscapeTileBinder(this, R.drawable.demo1_1,
+                        R.drawable.demo1_2));
+        adapter.add(DemoSectionType.ITEM,
+                new LandscapeTileBinder(this, R.drawable.demo1_3,
+                        R.drawable.demo1_4));
+        adapter.add(DemoSectionType.ITEM,
+                new LandscapeTileBinder(this, R.drawable.demo1_1,
+                        R.drawable.demo1_2));
+        adapter.add(DemoSectionType.ITEM,
+                new LandscapeTileBinder(this, R.drawable.demo1_3,
+                        R.drawable.demo1_4));
+        adapter.add(DemoSectionType.ITEM, new TitleBinder(this, "Description"));
+        adapter.add(DemoSectionType.ITEM,
+                new LandscapeDescriptionBinder(this, "description: Pisa"));
+        adapter.add(DemoSectionType.ITEM,
+                new LandscapeDescriptionBinder(this, "description: Venice"));
+        adapter.add(DemoSectionType.ITEM,
+                new LandscapeDescriptionBinder(this, "description: Burano"));
+
+        recyclerView.setAdapter(adapter);
     }
 }

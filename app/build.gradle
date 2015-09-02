@@ -25,5 +25,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:recyclerview-v7:22.2.1'
 
-    compile project(':recycler-itemdecoration')
+    compile 'jp.satorufujiwara:recyclerview-binder:1.2.0'
+
+//    compile project(':recycler-itemdecoration')
+    compile 'com.github.magiepooh:recycler-itemdecoration:1.1.0'
 }

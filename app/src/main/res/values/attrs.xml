@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="priority" format="enum">
+        <enum name="horizontal" value="0"/>
+        <enum name="vertical" value="1"/>
+    </attr>
+    <attr name="aspectRatio" format="float"/>
+    
+    <declare-styleable name="AspectRatioImageView">
+        <attr name="aspectRatio"/>
+        <attr name="priority"/>
+    </declare-styleable>
+</resources>

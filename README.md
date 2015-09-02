@@ -1,8 +1,14 @@
 # RecyclerItemDecoration
-ItemDecoration for RecyclerView using LinearLayoutManager
+ [ ![Download](https://api.bintray.com/packages/magiepooh/maven/RecyclerItemDecoration/images/download.svg) ](https://bintray.com/magiepooh/maven/RecyclerItemDecoration/_latestVersion) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-RecyclerItemDecoration-green.svg?style=flat)](https://android-arsenal.com/details/1/2417)
+
+RecyclerItemDecoration allows you to draw divider between items in recyclerview with multiple ViewType without considering items' positions!
+
+When using recyclerView with different ViewType, you either have only one simple divider or different types of dividers. When you want to draw different dividers between recyclerView's items, basically you must consider items' position; often you need to have separate ItemDecoration's behaviors declared in your code using switch cases or if statements. For example, each time items' position changes happen, you must rewrite ItemDecoration's behaviors.
+
+You don't need to think about items' position! You need to care about their **ViewType**!!
 
 # Image
-![screen_shot_01] ![screen_shot_02] ![screen_shot_03]
+![demo_vertical] ![demo_horizontal]
 
 # Support
 - LineaLayoutManager
@@ -12,20 +18,25 @@ ItemDecoration for RecyclerView using LinearLayoutManager
 
 # Gradle
 ```
-compile 'com.github.magiepooh:recycler-itemdecoration:1.0.0@aar'
+compile 'com.github.magiepooh:recycler-itemdecoration:1.1.0@aar'
 ```
 
 # How To Use
 ```java
-RecyclerView.ItemDecoration decoration = new VerticalItemDecoration.Builder(this)
-                .first(R.drawable.shape_decoration_sea_blue_h_8)
-                .type(VerticalAdapter.ViewType.TYPE_A.ordinal(), R.drawable.shape_decoration_black_h_1)
-                .type(VerticalAdapter.ViewType.TYPE_B.ordinal(), R.drawable.shape_decoration_gray_h_1)
-                .last(R.drawable.shape_decoration_flush_orange_h_8)
-                .build();
+RecyclerView.ItemDecoration decoration = ItemDecorations.vertical(this)
+                .first(R.drawable.shape_decoration_green_h_16)
+                .type(DemoViewType.LANDSCAPE_TILE.ordinal(), R.drawable.shape_decoration_cornflower_lilac_h_8)
+                .type(DemoViewType.LANDSCAPE_ITEM.ordinal(), R.drawable.shape_decoration_gray_h_12_padding)
+                .type(DemoViewType.LANDSCAPE_DESCRIPTION.ordinal(), R.drawable.shape_decoration_red_h_8)
+                .last(R.drawable.shape_decoration_flush_orange_h_16)
+                .create();
 
 recyclerView.addItemDecoration(decoration);
 ```
+
+# Credit
+- [recyclerview-binder](https://github.com/satorufujiwara/recyclerview-binder) by Satoru Fujiwara
+
 
 # License
 ```
@@ -45,6 +56,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-[screen_shot_01]:https://raw.githubusercontent.com/magiepooh/RecyclerItemDecoration/master/art/screen_shot_01.png
-[screen_shot_02]:https://raw.githubusercontent.com/magiepooh/RecyclerItemDecoration/master/art/screen_shot_02.png
-[screen_shot_03]:https://raw.githubusercontent.com/magiepooh/RecyclerItemDecoration/master/art/screen_shot_03.png
+[demo_vertical]:https://raw.githubusercontent.com/magiepooh/RecyclerItemDecoration/master/art/demo_vertical.gif
+[demo_horizontal]:https://raw.githubusercontent.com/magiepooh/RecyclerItemDecoration/master/art/demo_horizontal.gif

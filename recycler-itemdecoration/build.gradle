@@ -31,7 +31,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
     }
 }
 
@@ -45,6 +45,9 @@ bintray {
     user = properties.getProperty("bintray_user")
     key = properties.getProperty("bintray_api_key")
 
+    dryRun = false //Whether to run this as dry-run, without deploying
+    publish = true //If version should be auto published after an upload
+
     configurations = ['archives'] //When uploading configuration files
     pkg {
         repo = 'maven'
@@ -56,6 +59,13 @@ bintray {
         licenses = ['Apache-2.0']
         labels = ['aar', 'android', 'example']
         publicDownloadNumbers = true
+
+        version {
+            attributes = ['gradle-plugin': 'com.jfrog.bintray:com.jfrog.bintray.gradle:gradle-bintray-plugin']
+            name = VERSION_NAME
+            vcsTag = VERSION_NAME
+        }
+
     }
 }
 
