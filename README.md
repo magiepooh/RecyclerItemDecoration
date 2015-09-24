@@ -11,7 +11,7 @@ You don't need to think about items' position! You need to care about their **Vi
 ![demo_vertical] ![demo_horizontal]
 
 # Support
-- LineaLayoutManager
+- LinearLayoutManager
   - Vertical
   - Horizontal
   - Horizontal(Reverse)
