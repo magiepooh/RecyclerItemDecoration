@@ -20,6 +20,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -141,7 +142,7 @@ public class VerticalItemDecoration extends RecyclerView.ItemDecoration {
             return this;
         }
 
-        public Builder type(int viewType, int drawableResId) {
+        public Builder type(int viewType, @DrawableRes int drawableResId) {
             mDividerViewTypeMap.put(viewType, ContextCompat.getDrawable(mContext, drawableResId));
             return this;
         }
@@ -151,7 +152,7 @@ public class VerticalItemDecoration extends RecyclerView.ItemDecoration {
             return this;
         }
 
-        public Builder first(int drawableResId) {
+        public Builder first(@DrawableRes int drawableResId) {
             first(ContextCompat.getDrawable(mContext, drawableResId));
             return this;
         }
@@ -161,7 +162,7 @@ public class VerticalItemDecoration extends RecyclerView.ItemDecoration {
             return this;
         }
 
-        public Builder last(int drawableResId) {
+        public Builder last(@DrawableRes int drawableResId) {
             last(ContextCompat.getDrawable(mContext, drawableResId));
             return this;
         }
