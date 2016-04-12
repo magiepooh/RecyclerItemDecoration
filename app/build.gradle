@@ -27,6 +27,5 @@ dependencies {
 
     compile 'jp.satorufujiwara:recyclerview-binder:1.2.0'
 
-//    compile project(':recycler-itemdecoration')
-    compile 'com.github.magiepooh:recycler-itemdecoration:1.1.1'
+    compile project(':recycler-itemdecoration')
 }
