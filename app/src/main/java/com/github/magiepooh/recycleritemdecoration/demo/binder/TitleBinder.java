@@ -12,7 +12,7 @@ import jp.satorufujiwara.binder.recycler.RecyclerBinder;
 
 public class TitleBinder extends RecyclerBinder<DemoViewType> {
 
-    private String mTitle;
+    private final String mTitle;
 
     public TitleBinder(Activity activity, String title) {
         super(activity, DemoViewType.TITLE);
@@ -37,7 +37,7 @@ public class TitleBinder extends RecyclerBinder<DemoViewType> {
 
     private static final class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView mTextView;
+        private final TextView mTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);

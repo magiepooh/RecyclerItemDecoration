@@ -25,6 +25,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import java.util.Map;
 import java.util.HashMap;
 
 /**
@@ -34,11 +35,11 @@ public class VerticalItemDecoration extends RecyclerView.ItemDecoration {
 
     private static final int[] ATTRS = {android.R.attr.listDivider};
 
-    private HashMap<Integer, Drawable> mDividerViewTypeMap;
-    private Drawable mFirstDrawable;
-    private Drawable mLastDrawable;
+    private final Map<Integer, Drawable> mDividerViewTypeMap;
+    private final Drawable mFirstDrawable;
+    private final Drawable mLastDrawable;
 
-    public VerticalItemDecoration(HashMap<Integer, Drawable> dividerViewTypeMap,
+    public VerticalItemDecoration(Map<Integer, Drawable> dividerViewTypeMap,
             Drawable firstDrawable, Drawable lastDrawable) {
         mDividerViewTypeMap = dividerViewTypeMap;
         mFirstDrawable = firstDrawable;
@@ -65,10 +66,8 @@ public class VerticalItemDecoration extends RecyclerView.ItemDecoration {
         }
 
         // first position
-        if (isFirstPosition(view, parent)) {
-            if (mFirstDrawable != null) {
-                outRect.top = mFirstDrawable.getIntrinsicHeight();
-            }
+        if (isFirstPosition(view, parent) && mFirstDrawable != null) {
+            outRect.top = mFirstDrawable.getIntrinsicHeight();
         }
     }
 
@@ -104,13 +103,11 @@ public class VerticalItemDecoration extends RecyclerView.ItemDecoration {
             }
 
             // first position
-            if (isFirstPosition(child, parent)) {
-                if (mFirstDrawable != null) {
-                    int bottom = child.getTop() - params.topMargin;
-                    int top = bottom - mFirstDrawable.getIntrinsicHeight();
-                    mFirstDrawable.setBounds(left, top, right, bottom);
-                    mFirstDrawable.draw(c);
-                }
+            if (isFirstPosition(child, parent) && mFirstDrawable != null) {
+                int bottom = child.getTop() - params.topMargin;
+                int top = bottom - mFirstDrawable.getIntrinsicHeight();
+                mFirstDrawable.setBounds(left, top, right, bottom);
+                mFirstDrawable.draw(c);
             }
         }
     }
@@ -125,8 +122,8 @@ public class VerticalItemDecoration extends RecyclerView.ItemDecoration {
 
     public static class Builder {
 
-        private Context mContext;
-        private HashMap<Integer, Drawable> mDividerViewTypeMap = new HashMap<>();
+        private final Context mContext;
+        private final Map<Integer, Drawable> mDividerViewTypeMap = new HashMap<>();
         private Drawable mFirstDrawable;
         private Drawable mLastDrawable;
 
