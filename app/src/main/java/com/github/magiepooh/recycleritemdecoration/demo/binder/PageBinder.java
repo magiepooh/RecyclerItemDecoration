@@ -14,7 +14,7 @@ import jp.satorufujiwara.binder.recycler.RecyclerBinder;
 public class PageBinder extends RecyclerBinder<DemoViewType> {
 
     @DrawableRes
-    private int mResId;
+    private final int mResId;
 
     public PageBinder(Activity activity, @DrawableRes int resId) {
         super(activity, DemoViewType.PAGE);
@@ -39,7 +39,7 @@ public class PageBinder extends RecyclerBinder<DemoViewType> {
 
     private static final class ViewHolder extends RecyclerView.ViewHolder {
 
-        private AspectRatioImageView mImageView;
+        private final AspectRatioImageView mImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);

@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_main_horizontal:
                 HorizontalActivity.startActivity(this);
                 break;
+            default:
+                break;
         }
     }
 }

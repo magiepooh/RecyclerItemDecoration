@@ -15,8 +15,8 @@ import jp.satorufujiwara.binder.recycler.RecyclerBinder;
 public class LandscapeItemBinder extends RecyclerBinder<DemoViewType> {
 
     @DrawableRes
-    private int mResId;
-    private String mText;
+    private final int mResId;
+    private final String mText;
 
     public LandscapeItemBinder(Activity activity, @DrawableRes int resId, String text) {
         super(activity, DemoViewType.LANDSCAPE_ITEM);
@@ -43,8 +43,8 @@ public class LandscapeItemBinder extends RecyclerBinder<DemoViewType> {
 
     private static final class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView mImageView;
-        private TextView mTextView;
+        private final ImageView mImageView;
+        private final TextView mTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);

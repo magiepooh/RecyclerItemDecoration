@@ -27,6 +27,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by magiepooh on 2015/08.
@@ -35,11 +36,11 @@ public class HorizontalItemDecoration extends RecyclerView.ItemDecoration {
 
     private static final int[] ATTRS = {android.R.attr.listDivider};
 
-    private HashMap<Integer, Drawable> mDividerViewTypeMap;
-    private Drawable mFirstDrawable;
-    private Drawable mLastDrawable;
+    private final Map<Integer, Drawable> mDividerViewTypeMap;
+    private final Drawable mFirstDrawable;
+    private final Drawable mLastDrawable;
 
-    public HorizontalItemDecoration(HashMap<Integer, Drawable> dividerViewTypeMap,
+    public HorizontalItemDecoration(Map<Integer, Drawable> dividerViewTypeMap,
             Drawable firstDrawable, Drawable lastDrawable) {
         mDividerViewTypeMap = dividerViewTypeMap;
         mFirstDrawable = firstDrawable;
@@ -75,14 +76,14 @@ public class HorizontalItemDecoration extends RecyclerView.ItemDecoration {
         }
 
         // first position
-        if (isFirstPosition(view, parent)) {
-            if (mFirstDrawable != null) {
-                if (isReverse) {
-                    outRect.right = mFirstDrawable.getIntrinsicWidth();
-                } else {
-                    outRect.left = mFirstDrawable.getIntrinsicWidth();
-                }
+        if (isFirstPosition(view, parent) && mFirstDrawable != null) {
+
+            if (isReverse) {
+                outRect.right = mFirstDrawable.getIntrinsicWidth();
+            } else {
+                outRect.left = mFirstDrawable.getIntrinsicWidth();
             }
+
         }
     }
 
@@ -131,19 +132,18 @@ public class HorizontalItemDecoration extends RecyclerView.ItemDecoration {
             }
 
             // first position
-            if (isFirstPosition(child, parent)) {
-                if (mFirstDrawable != null) {
-                    int left, right;
-                    if (isReverse) {
-                        left = child.getRight() + params.rightMargin;
-                        right = left + mFirstDrawable.getIntrinsicWidth();
-                    } else {
-                        right = child.getLeft() - params.leftMargin;
-                        left = right - mFirstDrawable.getIntrinsicWidth();
-                    }
-                    mFirstDrawable.setBounds(left, top, right, bottom);
-                    mFirstDrawable.draw(c);
+            if (isFirstPosition(child, parent) && mFirstDrawable != null) {
+
+                int left, right;
+                if (isReverse) {
+                    left = child.getRight() + params.rightMargin;
+                    right = left + mFirstDrawable.getIntrinsicWidth();
+                } else {
+                    right = child.getLeft() - params.leftMargin;
+                    left = right - mFirstDrawable.getIntrinsicWidth();
                 }
+                mFirstDrawable.setBounds(left, top, right, bottom);
+                mFirstDrawable.draw(c);
             }
         }
     }
@@ -158,8 +158,8 @@ public class HorizontalItemDecoration extends RecyclerView.ItemDecoration {
 
     public static class Builder {
 
-        private Context mContext;
-        private HashMap<Integer, Drawable> mDividerViewTypeMap = new HashMap<>();
+        private final Context mContext;
+        private final Map<Integer, Drawable> mDividerViewTypeMap = new HashMap<>();
         private Drawable mFirstDrawable;
         private Drawable mLastDrawable;
 
