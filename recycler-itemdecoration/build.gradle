@@ -4,26 +4,27 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'license'
 
 android {
-    compileSdkVersion COMPILE_SDK_VERSION as int
-    buildToolsVersion BUILD_TOOLS_VERSION
+  compileSdkVersion COMPILE_SDK_VERSION as int
+  buildToolsVersion BUILD_TOOLS_VERSION
 
-    defaultConfig {
-        minSdkVersion 7
-        targetSdkVersion COMPILE_SDK_VERSION as int
-        versionCode VERSION_CODE as int
-        versionName VERSION_NAME
+  defaultConfig {
+    minSdkVersion 9
+    targetSdkVersion COMPILE_SDK_VERSION as int
+    versionCode VERSION_CODE as int
+    versionName VERSION_NAME
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+  }
+  buildToolsVersion '25.0.2'
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:recyclerview-v7:22.2.1'
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile 'com.android.support:recyclerview-v7:25.3.1'
 }
 
 // for maven
@@ -33,94 +34,94 @@ group = GROUP
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 bintray {
-    user = properties.getProperty("bintray_user")
-    key = properties.getProperty("bintray_api_key")
+  user = properties.getProperty("bintray_user")
+  key = properties.getProperty("bintray_api_key")
 
-    dryRun = false //Whether to run this as dry-run, without deploying
-    publish = true //If version should be auto published after an upload
+  dryRun = false //Whether to run this as dry-run, without deploying
+  publish = true //If version should be auto published after an upload
 
-    configurations = ['archives'] //When uploading configuration files
-    pkg {
-        repo = 'maven'
-        name = ARTIFACT_NAME
-        desc = ARTIFACT_DESCRIPTION
-        websiteUrl = SITE_URL
-        issueTrackerUrl = 'https://github.com/magiepooh/RecyclerItemDecoration/issues'
-        vcsUrl = GIT_URL
-        licenses = ['Apache-2.0']
-        labels = ['aar', 'android', 'example']
-        publicDownloadNumbers = true
+  configurations = ['archives'] //When uploading configuration files
+  pkg {
+    repo = 'maven'
+    name = ARTIFACT_NAME
+    desc = ARTIFACT_DESCRIPTION
+    websiteUrl = SITE_URL
+    issueTrackerUrl = 'https://github.com/magiepooh/RecyclerItemDecoration/issues'
+    vcsUrl = GIT_URL
+    licenses = ['Apache-2.0']
+    labels = ['aar', 'android', 'example']
+    publicDownloadNumbers = true
 
-        version {
-            attributes = ['gradle-plugin': 'com.jfrog.bintray:com.jfrog.bintray.gradle:gradle-bintray-plugin']
-            name = VERSION_NAME
-            vcsTag = VERSION_NAME
-        }
-
+    version {
+      attributes =
+          ['gradle-plugin': 'com.jfrog.bintray:com.jfrog.bintray.gradle:gradle-bintray-plugin']
+      name = VERSION_NAME
+      vcsTag = VERSION_NAME
     }
+  }
 }
 
 install {
-    repositories.mavenInstaller {
-        pom {
-            project {
-                packaging 'aar'
-                name ARTIFACT_NAME
-                url SITE_URL
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'magiepooh'
-                        name 'Takuma Fujita'
-                        email 't.fujita0529+m@gmail.com'
-                    }
-                }
-                scm {
-                    connection GIT_URL
-                    developerConnection GIT_URL
-                    url SITE_URL
-                }
-            }
+  repositories.mavenInstaller {
+    pom {
+      project {
+        packaging 'aar'
+        name ARTIFACT_NAME
+        url SITE_URL
+        licenses {
+          license {
+            name 'The Apache Software License, Version 2.0'
+            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+          }
         }
+        developers {
+          developer {
+            id 'magiepooh'
+            name 'Takuma Fujita'
+            email 't.fujita0529+m@gmail.com'
+          }
+        }
+        scm {
+          connection GIT_URL
+          developerConnection GIT_URL
+          url SITE_URL
+        }
+      }
     }
+  }
 }
 
 task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
+  from android.sourceSets.main.java.srcDirs
+  classifier = 'sources'
 }
 
 task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+  source = android.sourceSets.main.java.srcDirs
+  classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
+  classifier = 'javadoc'
+  from javadoc.destinationDir
 }
 artifacts {
-    archives javadocJar
-    archives sourcesJar
+  archives javadocJar
+  archives sourcesJar
 }
 
 task findConventions << {
-    println project.getConvention()
+  println project.getConvention()
 }
 
 license {
 
-    sourceSets {
-        main.java.srcDirs = android.sourceSets.main.java.srcDirs
-        main.resources.srcDirs = android.sourceSets.main.resources.srcDirs
-    }
+  sourceSets {
+    main.java.srcDirs = android.sourceSets.main.java.srcDirs
+    main.resources.srcDirs = android.sourceSets.main.resources.srcDirs
+  }
 
-    ext.year = Calendar.getInstance().get(Calendar.YEAR)
-    ext.name = properties.getProperty("bintray_user")
+  ext.year = Calendar.getInstance().get(Calendar.YEAR)
+  ext.name = properties.getProperty("bintray_user")
 }
 

@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">RecyclerItemDecoration</string>
+  <string name="app_name">RecyclerItemDecoration</string>
 
-    <string name="activity_main_vertical">VERTICAL</string>
-    <string name="activity_main_horizontal">HORIZONTAL</string>
+  <string name="activity_main_vertical">VERTICAL</string>
+  <string name="activity_main_horizontal">HORIZONTAL</string>
 
-    <string name="activity_horizontal_normal">Normal</string>
-    <string name="activity_horizontal_reverse">Reverse</string>
+  <string name="activity_horizontal_normal">Normal</string>
+  <string name="activity_horizontal_reverse">Reverse</string>
 </resources>
