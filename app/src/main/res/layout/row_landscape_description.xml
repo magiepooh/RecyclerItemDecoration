@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/height_48dp"
-    android:orientation="vertical"
-    android:padding="@dimen/margin_8dp">
+  android:layout_width="match_parent"
+  android:layout_height="@dimen/height_48dp"
+  android:orientation="vertical"
+  android:padding="@dimen/margin_8dp"
+  >
 
-    <TextView
-        android:id="@+id/txt_landscape_description"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_12sp"/>
+  <TextView
+    android:id="@+id/txt_landscape_description"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:textColor="@color/white"
+    android:textSize="@dimen/text_size_12sp"
+    />
 </LinearLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="cornflower_lilac">#FFAAA9</color>
-    <color name="nero">#FF262626</color>
-    <color name="white">#FFFFFFFF</color>
+  <color name="cornflower_lilac">#FFAAA9</color>
+  <color name="nero">#FF262626</color>
+  <color name="white">#FFFFFFFF</color>
 </resources>
