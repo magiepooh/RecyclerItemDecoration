@@ -18,7 +18,7 @@ You don't need to think about items' position! You need to care about their **Vi
 
 # Gradle
 ```
-compile 'com.github.magiepooh:recycler-itemdecoration:1.1.1@aar'
+implementation 'com.github.magiepooh:recycler-itemdecoration:1.1.1@aar'
 ```
 
 # How To Use
